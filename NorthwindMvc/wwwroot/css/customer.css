@@ -1,0 +1,39 @@
+﻿tr:nth-child(4n) {
+	background-color:#fff3ce;
+}
+
+tr:nth-child(2n) {
+	text-align: left;
+	border-top: 1px groove #ddd;
+}
+
+tr:nth-child(4n+2) {
+	background-color: #fff7e3;
+}
+
+#customer-row {
+	padding-bottom:0px;
+	margin:0px;
+}
+
+.customer-detail {
+	height: 0px;
+	padding: 0px;
+	margin: 0px;
+	border-spacing: 0px;
+	margin-bottom: 0px;
+}
+
+.customer-table {
+	width: 80vw;
+
+}
+
+p {
+	margin-bottom:0px;
+}
+
+.customer-attr {
+	padding-bottom: 5px;
+	padding-top:5px;
+}

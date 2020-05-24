@@ -1,0 +1,36 @@
+﻿@model CustomersViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+<link rel="stylesheet" type="text/css" href="~/css/customer.css" />
+<h1>Customers</h1>
+<table class="customer-table">
+    <tr class="d-table-row">
+        <th class="thead-light">Customer ID</th>
+        <th class="thead-light">Customer Name</th>
+        <th class="thead-light">Customer Country</th>
+    </tr>
+    @foreach(Customer c in Model.Customers)
+	{
+        <tr class="d-table-row" id="customer-row">
+            <td class="customer-attr">@c.CustomerID</td>
+            <td class="customer-attr">@c.ContactName</td>
+            <td class="customer-attr">@c.Country</td>
+        </tr>
+        <tr class="customer-detail">
+            <td colspan="3">
+				<div>
+					<a asp-action="Orders" asp-route-id="@c.CustomerID" style="float:right;">View Orders</a>
+					<p>
+						<b>Address:</b> @c.Address @c.City @c.PostalCode
+					</p>
+					<p>
+						<b>Phone:</b> @c.Phone <b>Fax:</b> @c.Fax
+					</p>
+				</div>
+            </td>
+        </tr>
+	}
+</table>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/customer.js" asp-append-version="true"></script>

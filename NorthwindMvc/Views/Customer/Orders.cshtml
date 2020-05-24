@@ -1,0 +1,56 @@
+﻿@model CustomerOrderViewModel
+@{
+	ViewData["Title"] = "Orders";
+	decimal Total = 0;
+	foreach(Order order in Model.Orders)
+		Total += order.OrderDetails.Sum(x => x.Quantity * x.UnitPrice);
+}
+
+<link rel="stylesheet" type="text/css" href="~/css/order.css" />
+<h1>Orders by @Model.Customer.ContactName</h1>
+<p>Click on an order to view details</p>
+<table class="order-table">
+	<tr class="order-table-head">
+		<th>Order ID</th>
+		<th>Order Date</th>
+		<th>Ship Name</th>
+		<th>Total</th>
+	</tr>
+	@foreach (Order order in Model.Orders)
+	{
+		<tr id="order-row">
+			<td class="order-attr">@order.OrderID</td>
+			<td class="order-attr">@order.OrderDate</td>
+			<td class="order-attr">@order.ShipName</td>
+			<td class="order-attr">@order.OrderDetails.Sum(x => x.Quantity * x.UnitPrice).ToString("C")</td>
+		</tr>
+		<tr>
+			<td colspan="4">
+			<table class="detail-table">
+				<tr>
+					<th>Product ID</th>
+					<th>Product Name</th>
+					<th>Quantitiy</th>
+					<th>Unit Price</th>
+					<th>Total</th>
+				</tr>
+					@foreach (OrderDetail orderDetail in order.OrderDetails)
+					{
+					<tr>
+						<td>@orderDetail.ProductID</td>
+						<td>@orderDetail.Product.ProductName</td>
+						<td>@orderDetail.Quantity</td>
+						<td>@orderDetail.UnitPrice.ToString("C")</td>
+						<td>@((orderDetail.UnitPrice * orderDetail.Quantity).ToString("C"))</td>
+					</tr>
+					}
+			</table>
+			</td>
+		</tr>
+	}
+
+</table>
+<p class="total">Total: @Total.ToString("C")</p>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/order.js"></script>
+

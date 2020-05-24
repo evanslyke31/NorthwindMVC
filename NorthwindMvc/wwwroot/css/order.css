@@ -1,0 +1,30 @@
+﻿.order-table td{
+	width:80vw;
+	border:solid 1px #eee;
+}
+
+.order-table-head {
+	font-size:20px;
+}
+
+#order-row:nth-child(4n) {
+	background-color:#d8ffff;
+}
+
+#order-row:nth-child(4n+2) {
+	background-color: #ebfffd;
+}
+
+.order-attr {
+	font-size:18px;
+}
+
+.detail-table {
+	width:100%;
+}
+
+.total {
+	float:right;
+	background-color: aqua;
+	padding: 3px;
+}
