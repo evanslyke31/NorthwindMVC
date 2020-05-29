@@ -1,0 +1,70 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap');
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	width: 98vw;
+}
+
+.product {
+	margin: 5px;
+	padding: 8px;
+}
+
+p {
+	padding:0px;
+	margin:0px;
+}
+
+.title {
+	font-family: 'Noto Sans JP', sans-serif;
+	font: bold;
+	font-size: 22px;
+}
+
+.product-info {
+	margin-left: 10px;
+}
+
+.amt-text {
+	text-align:center;
+	width: 110px;
+	min-width:20px;
+}
+
+.amt-control {
+	display: flex;
+	justify-content: center;
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+
+.amt-minus {
+	background-color: #be0000;
+	border: 0px none;
+	border-radius: 5px 0px 0px 5px;
+	width: 25px;
+}
+
+.amt-minus:focus, .amt-plus:focus {
+		outline: none;
+
+}
+
+.amt-plus {
+	background-color: #2bcc00;
+	border: 0px none;
+	border-radius: 0px 5px 5px 0px;
+	width:25px;
+}
+
+.amt-text {
+	background-color: #262626;
+	color: #FFF;
+	border: 0px none;
+}
+
+.total {
+	font-size: 25px;
+}

@@ -1,0 +1,10 @@
+﻿@model OrderViewModel
+@{
+    ViewData["Title"] = "Buy";
+}
+
+<h1>Buy</h1>
+@foreach(var o in Model.Order)
+{
+    <p>@o.ID @o.Product.ProductName @o.Amount</p>
+}

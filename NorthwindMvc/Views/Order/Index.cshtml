@@ -1,0 +1,37 @@
+﻿@model OrdersViewModel
+@{
+	ViewData["Title"] = "Index";
+	Dictionary<string, int> order = new Dictionary<string, int>();
+	foreach(Product product in Model.Products)
+	{
+		order[product.ProductID.ToString()] = 0;
+	}
+}
+
+<link rel="stylesheet" href="~/css/item.css" />
+<span class="total"><b>Total: </b>$<span id="order-total">0</span></span>
+<a asp-area="" asp-controller="Order" asp-action="Buy">Order</a>
+<div class="container">
+	@foreach (Product product in Model.Products)
+	{
+		<div class="bg-dark rounded-lg text-light product">
+			<p class="title">@product.ProductName</p>
+			<p class="product-info"><b>Unit: </b>@product.QuantityPerUnit</p>
+			<p class="product-info"><b>Stock: </b>@product.UnitsInStock</p>
+			<p class="product-info"><b>Price: </b>@($"{product.UnitPrice:C}")</p>
+			<div class="amt-control">
+				<button class="amt-minus" id="@product.ProductID-minus">-</button>
+				<input type="text" value="0" id="@product.ProductID-amt" class="amt-text" onkeypress="return isNumberKey(event)"/>
+				<button class="amt-plus" id="@product.ProductID-plus">+</button>
+			</div>
+		</div>
+	}
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/product.js"></script>
+<script type="text/javascript">
+	order = @Html.Raw(Json.Serialize(order));
+	products = @Html.Raw(Json.Serialize(Model.Products));
+	console.log(products);
+</script>
