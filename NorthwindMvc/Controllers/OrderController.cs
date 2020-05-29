@@ -33,7 +33,7 @@ namespace NorthwindMvc.Controllers
         public IActionResult Buy()
         {
             var x = Request.Cookies;
-            if (!HttpContext.Request.Cookies.ContainsKey("order"))
+            if (!HttpContext.Request.Cookies.ContainsKey("order") || Request.Cookies["order"] == "")
             {
                 return RedirectToAction("Index");
             }

@@ -2,6 +2,20 @@
 var products;
 var total = 0;
 
+$(document).ready(function () {
+	var val = getCookie("order");
+	if (val == "") {
+		return
+	}
+	var splt = val.substring(0,val.length-1).split('-');
+	for (var i = 0; i < splt.length; i++) {
+		o = splt[i].split(':');
+		$('#' + o[0] + '-amt').val(o[1]);
+		order[o[0]] = o[1];
+	}
+	calcTotal();
+});
+
 $("button.amt-plus").click(function (event) {
 
 	var $target = $(event.target);
@@ -50,13 +64,38 @@ function calcTotal() {
 }
 
 function bakeCookie() {
+	//var exdate = new Date();
+	//exdate = new Date(exdate.getTime() + 30 * 60000);
 	var orderStr = "";
 	for (const id in order) {
 		if (order[id] > 0) {
 			orderStr += id + ":" + order[id] + "-";
 		}
 	}
-	console.log(orderStr);
-	document.cookie = "order=" + orderStr + ";";
-	document.cookie = "tset=test;";
+	document.cookie = "order=" + orderStr + ";";//expires=" + exdate.toUTCString();
+}
+
+function getCookie(cname) {
+	var name = cname + "=";
+	var decodedCookie = decodeURIComponent(document.cookie);
+	var ca = decodedCookie.split(';');
+	for (var i = 0; i < ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0) == ' ') {
+			c = c.substring(1);
+		}
+		if (c.indexOf(name) == 0) {
+			return c.substring(name.length, c.length);
+		}
+	}
+	return "";
+}
+
+function clearOrders() {
+	for (const id in order) {
+		order[id] = 0;
+		$('.amt-text').val(0);
+	}
+	bakeCookie();
+	calcTotal();
 }

@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="~/css/item.css" />
 <span class="total"><b>Total: </b>$<span id="order-total">0</span></span>
 <a asp-area="" asp-controller="Order" asp-action="Buy">Order</a>
+<button onclick="clearOrders()">clear order</button>
 <div class="container">
 	@foreach (Product product in Model.Products)
 	{
@@ -33,5 +34,4 @@
 <script type="text/javascript">
 	order = @Html.Raw(Json.Serialize(order));
 	products = @Html.Raw(Json.Serialize(Model.Products));
-	console.log(products);
 </script>
