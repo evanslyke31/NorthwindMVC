@@ -1,10 +1,33 @@
 ﻿@model OrderViewModel
 @{
-    ViewData["Title"] = "Buy";
+	ViewData["Title"] = "Buy";
+	decimal? total = Model.Order.Sum(o => o.Product.UnitPrice * o.Amount);
 }
 
-<h1>Buy</h1>
-@foreach(var o in Model.Order)
-{
-    <p>@o.ID @o.Product.ProductName @o.Amount</p>
-}
+<link rel="stylesheet" href="~/css/buy.css" />
+
+<h1>Order</h1>
+<table class="table table-striped table-dark">
+	<tr class="">
+		<th>Product Name</th>
+		<th>Quantity</thclass="thead-dark">
+		<th>Cost</th>
+		<th>Total</th>
+	</tr>
+	@foreach (var o in Model.Order)
+	{
+		<tr class="">
+			<td>@o.Product.ProductName</td>
+			<td>@o.Amount</td>
+			<td>@($"{o.Product.UnitPrice:C}")</td>
+			<td>@($"{o.Product.UnitPrice * o.Amount:C}")</td>
+		</tr>
+	}
+</table>
+<p class="total"><b>Total:</b> @($"{total:C}")</p>
+<a class="btn btn-success" onclick="clearOrders()" asp-area="" asp-controller="Home" asp-action="">Confirm Order</a>
+<script>
+	function clearOrders() {
+		document.cookie = "order=;path=/";//expires=" + exdate.toUTCString();
+	}
+</script>

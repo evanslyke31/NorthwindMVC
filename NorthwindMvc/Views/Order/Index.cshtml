@@ -8,10 +8,14 @@
 	}
 }
 
-<link rel="stylesheet" href="~/css/item.css" />
-<span class="total"><b>Total: </b>$<span id="order-total">0</span></span>
-<a asp-area="" asp-controller="Order" asp-action="Buy">Order</a>
-<button onclick="clearOrders()">clear order</button>
+<div class="order-control">
+	<link rel="stylesheet" href="~/css/item.css" />
+	<span class="total"><b>Total: </b>$<span id="order-total">0.00</span></span>
+	<div style="float:right;">
+		<a asp-area="" asp-controller="Order" asp-action="Buy" class="btn btn-outline-primary">Order</a>
+		<button onclick="clearOrders()" class="btn btn-outline-dark">clear order</button>
+	</div>
+</div>
 <div class="container">
 	@foreach (Product product in Model.Products)
 	{

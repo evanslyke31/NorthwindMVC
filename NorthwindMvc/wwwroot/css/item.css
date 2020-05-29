@@ -68,3 +68,11 @@ p {
 .total {
 	font-size: 25px;
 }
+
+.clear-btn {
+	background-color:#232323
+}
+
+.order-control {
+	margin-bottom: 20px;
+}

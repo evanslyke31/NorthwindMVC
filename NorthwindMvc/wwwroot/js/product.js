@@ -60,7 +60,7 @@ function calcTotal() {
 	for (const id in order) {
 		total += products[id - 1].unitPrice * order[id];
 	}
-	$('#order-total').text(total);
+	$('#order-total').text(total.toFixed(2));
 }
 
 function bakeCookie() {

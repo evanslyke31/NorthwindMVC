@@ -4,7 +4,8 @@
     string currentItem = "";
 }
 
-<div id="categories" class="carousel slide" data-ride="carousel" data-interval="3000" data-keyboard="true">
+<secton class="bg-dark">
+<div id="categories" class="carousel slide w-75" data-ride="carousel" data-interval="3000" data-keyboard="true" style="display: block;margin-left: auto;margin-right: auto">
     <ol class="carousel-indicators">
     @for(int c = 0; c < Model.Categories.Count; c++)
 	{
@@ -31,7 +32,7 @@
 			<div class="carousel-item @currentItem">
 				<img class="d-block w-100" src="~/images/category@(Model.Categories[c].CategoryID).jpeg"
 					 alt="@Model.Categories[c].CategoryName" />
-				<div class="carousel-caption d-none d-md-block text-light bg-dark rounded">
+				<div class="carousel-caption d-none d-md-block text-light rounded bg-transparent">
 					<h2>@Model.Categories[c].CategoryName</h2>
 					<h3>@Model.Categories[c].Description</h3>
 					<p>
@@ -50,6 +51,7 @@
 		<span class="sr-only">Next</span>
 	</a>
 </div>
+</secton>
 <div class="row">
 	<div class="col-md-12">
 		<h1>Northwind</h1>
