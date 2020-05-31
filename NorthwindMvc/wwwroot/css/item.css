@@ -29,7 +29,7 @@ p {
 
 .amt-text {
 	text-align:center;
-	width: 110px;
+	width: 50px;
 	min-width:20px;
 }
 
@@ -45,6 +45,8 @@ p {
 	border: 0px none;
 	border-radius: 5px 0px 0px 5px;
 	width: 25px;
+	font:bold;
+	font-size:17px;
 }
 
 .amt-minus:focus, .amt-plus:focus {
@@ -57,6 +59,8 @@ p {
 	border: 0px none;
 	border-radius: 0px 5px 5px 0px;
 	width:25px;
+	font:bold;
+	font-size: 17px;
 }
 
 .amt-text {

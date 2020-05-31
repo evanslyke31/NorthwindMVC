@@ -20,10 +20,12 @@ $("button.amt-plus").click(function (event) {
 
 	var $target = $(event.target);
 	var cardID = $target[0].id.split('-')[0];
-	$('#' + cardID + '-amt').val(parseInt($('#' + cardID + '-amt').val()) + 1); 
-	order[cardID] = parseInt($('#' + cardID + '-amt').val());
-	calcTotal();
-	bakeCookie();
+	if ($('#' + cardID + '-amt').val() < products[parseInt(cardID) - 1].unitsInStock) {
+		$('#' + cardID + '-amt').val(parseInt($('#' + cardID + '-amt').val()) + 1);
+		order[cardID] = parseInt($('#' + cardID + '-amt').val());
+		calcTotal();
+		bakeCookie();
+	}
 });
 
 $("button.amt-minus").click(function (event) {
@@ -47,8 +49,17 @@ function isNumberKey(evt) {
 $('.amt-text').keydown(function (event) {
 	var keypressed = event.keyCode || event.which;
 	if (keypressed == 13) {
+
 		var $target = $(event.target);
 		var cardID = $target[0].id.split('-')[0];
+		var val = $('#' + cardID + '-amt').val();
+		if (parseInt(val) > products[parseInt(cardID) - 1].unitsInStock) {
+			$('#' + cardID + '-amt').val(products[parseInt(cardID) - 1].unitsInStock);
+		} else if (val == "" || val == NaN) {
+			$('#' + cardID + '-amt').val(0);
+		} else if (parseInt(val) < 0) {
+			$('#' + cardID + '-amt').val(0);
+		}
 		order[cardID] = parseInt($('#' + cardID + '-amt').val());
 		calcTotal();
 		bakeCookie();
